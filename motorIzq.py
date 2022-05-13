@@ -60,7 +60,7 @@ nbStepsPerRev=2048
 if __name__ == '__main__' :
     hasRun=False
     while not hasRun:
-            steps(nbStepsPerRev)# parcourt un tour dans le sens horaire
+            steps(-nbStepsPerRev)# parcourt un tour dans le sens horaire
             time.sleep(1)
             hasRun=True
 
