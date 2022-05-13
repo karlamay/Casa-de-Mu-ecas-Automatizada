@@ -93,6 +93,7 @@ io.sockets.on('connection', function (socket) {
   });
   
   process.on('SIGINT', function () {
+    clearInterval(motoDerInterval);
     LED.writeSync(0);
     LED.unexport();
     LED2.writeSync(0);
