@@ -88,9 +88,8 @@
     <table align="center" id="tabla">
         <tr>
             <td align="center">
-                <h2>Base Giratoria</h2><button id="moto" onclick="document.getElementById('myImage8').src='https://i.postimg.cc/T3Qh4g7S/BaseDer.png'">DERECHA</button>
-                <button id="moto2" onclick="document.getElementById('myImage8').src='https://i.postimg.cc/CK1dT59K/Base.png'">APAGAR</button>
-                <button id="moto3" onclick="document.getElementById('myImage8').src='https://i.postimg.cc/0NBj8xq0/BaseIzq.png'">IZQUIERDA</button>
+                <h2>Base Giratoria</h2><button id="moto" onclick="document.getElementById('myImage8').src='https://i.postimg.cc/T3Qh4g7S/BaseDer.png'; exec('python motorDer.py');">DERECHA</button>
+                <button id="moto3" onclick="document.getElementById('myImage8').src='https://i.postimg.cc/0NBj8xq0/BaseIzq.png'; exec('python motorIzq.py');">IZQUIERDA</button>
                 <br><img id="myImage8" src="https://i.postimg.cc/CK1dT59K/Base.png" style="width: 110px">
             </td>
         </tr>
@@ -195,27 +194,6 @@
                 socket.emit("domo",'1101');
             });
         });
-        //Base Giratoria
-        var socket = io();
-        window.addEventListener("load",function(){
-            var btn = document.getElementById("moto");
-            btn.addEventListener("click",function(){
-                socket.emit("domo",'D');
-            });
-        });
-        window.addEventListener("load",function(){
-            var btn = document.getElementById("moto2");
-            btn.addEventListener("click",function(){
-                socket.emit("domo",'A');
-            });
-        });
-        window.addEventListener("load",function(){
-            var btn = document.getElementById("moto3");
-            btn.addEventListener("click",function(){
-                socket.emit("domo",'I');
-            });
-        });
-        
     </script>
 </body>
 </html>
