@@ -28,53 +28,46 @@ io.sockets.on('connection', function (socket) {
     socket.on('domo', function(data) {
       switch(data){
         case '0000':
-          LED.writeSync(0);
-          break;
-        case '0001':
           LED.writeSync(1);
           break;
-        case '0010':
-          LED2.writeSync(0);
+        case '0001':
+          LED.writeSync(0);
           break;
-        case '0011':
+        case '0010':
           LED2.writeSync(1);
           break;
-        case '0100':
-          LED3.writeSync(0);
+        case '0011':
+          LED2.writeSync(0);
           break;
-        case '0101':
+        case '0100':
           LED3.writeSync(1);
           break;
-        case '0110':
-          LED4.writeSync(0);
+        case '0101':
+          LED3.writeSync(0);
           break;
-        case '0111':
+        case '0110':
           LED4.writeSync(1);
           break;
-        case '1000':
-          LED5.writeSync(0);
+        case '0111':
+          LED4.writeSync(0);
           break;
-        case '1001':
+        case '1000':
           LED5.writeSync(1);
           break;
-        case '1010':
-          LED6.writeSync(0);
+        case '1001':
+          LED5.writeSync(0);
           break;
-        case '1011':
+        case '1010':
           LED6.writeSync(1);
           break;
-        case '1100':
-          LED7.writeSync(0);
+        case '1011':
+          LED6.writeSync(0);
           break;
-        case '1101':
+        case '1100':
           LED7.writeSync(1);
           break;
-        case 'D':
-          derMOTO();
-          break;
-        case 'A':
-          break;
-        case 'I':
+        case '1101':
+          LED7.writeSync(0);
           break;
       }
     });
