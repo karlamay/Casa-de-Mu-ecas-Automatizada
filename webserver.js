@@ -9,13 +9,11 @@ var LED = new Gpio(4,'out'),
     LED5 = new Gpio(10,'out'),
     LED6 = new Gpio(9,'out'),
     LED7 = new Gpio(11,'out');
-var MOTO = [
-            new Gpio(18, 'out'),
-            new Gpio(23, 'out'),
-            new Gpio(24, 'out'),
-            new Gpio(25, 'out')
-];
-var motoInterval = setInterval(MOTO,5);
+var MOTO = new Gpio(18, 'out');
+var MOTO2 = new Gpio(23, 'out');
+var MOTO3 = new Gpio(24, 'out');
+var MOTO4 = new Gpio(25, 'out');
+var motoDerInterval = setInterval(derMOTO,5);
 
 http.listen(1919);
 
@@ -77,11 +75,19 @@ io.sockets.on('connection', function (socket) {
           LED7.writeSync(1);
           break;
         case 'D':
-          MOTO=[1,0,0,0];
-          MOTO=[0,1,0,0];
-          MOTO=[0,0,1,0];
-          MOTO=[0,0,0,1];
-
+          function derMOTO(){
+            while (True) {
+              MOTO.writeSync(1); MOTO2.writeSync(0); MOTO3.writeSync(0); MOTO4.writeSync(0);
+              MOTO.writeSync(0); MOTO2.writeSync(1); MOTO3.writeSync(0); MOTO4.writeSync(0);
+              MOTO.writeSync(0); MOTO2.writeSync(0); MOTO3.writeSync(1); MOTO4.writeSync(0);
+              MOTO.writeSync(0); MOTO2.writeSync(0); MOTO3.writeSync(0); MOTO4.writeSync(1);
+            }
+          }
+          break;
+        case 'A':
+          break;
+        case 'I':
+          break;
       }
     });
   });
@@ -101,6 +107,13 @@ io.sockets.on('connection', function (socket) {
     LED6.unexport();
     LED7.writeSync(0);
     LED7.unexport();
+    MOTO.writeSync(0);
     MOTO.unexport();
+    MOTO2.writeSync(0);
+    MOTO2.unexport();
+    MOTO3.writeSync(0);
+    MOTO3.unexport();
+    MOTO4.writeSync(0);
+    MOTO4.unexport();
     process.exit();
 });
