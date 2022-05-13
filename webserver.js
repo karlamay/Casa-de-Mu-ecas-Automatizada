@@ -9,6 +9,13 @@ var LED = new Gpio(4,'out'),
     LED5 = new Gpio(10,'out'),
     LED6 = new Gpio(9,'out'),
     LED7 = new Gpio(11,'out');
+var MOTO = [
+            new Gpio(18, 'out'),
+            new Gpio(23, 'out'),
+            new Gpio(24, 'out'),
+            new Gpio(25, 'out')
+];
+var motoInterval = setInterval(MOTO,5);
 
 http.listen(1919);
 
@@ -69,6 +76,12 @@ io.sockets.on('connection', function (socket) {
         case '1101':
           LED7.writeSync(1);
           break;
+        case 'D':
+          MOTO=[1,0,0,0];
+          MOTO=[0,1,0,0];
+          MOTO=[0,0,1,0];
+          MOTO=[0,0,0,1];
+
       }
     });
   });
@@ -88,5 +101,6 @@ io.sockets.on('connection', function (socket) {
     LED6.unexport();
     LED7.writeSync(0);
     LED7.unexport();
-    process.exit(); 
+    MOTO.unexport();
+    process.exit();
 });
